@@ -49,6 +49,13 @@ import UserProfile from "layouts/user-profile";
 import UserManagement from "layouts/user-management";
 import { Helmet } from "react-helmet";
 
+// Table Tennis components
+import TableTennisDashboard from "layouts/table-tennis/dashboard";
+import LiveMatches from "layouts/table-tennis/live-matches";
+import Tournaments from "layouts/table-tennis/tournaments";
+import Rankings from "layouts/table-tennis/rankings";
+import Players from "layouts/table-tennis/players";
+
 export default function App() {
   const authContext = useContext(AuthContext);
 
@@ -278,6 +285,8 @@ export default function App() {
             <Route path="/auth/register" element={<Register />} />
             <Route path="/auth/forgot-password" element={<ForgotPassword />} />
             <Route path="/auth/reset-password" element={<ResetPassword />} />
+            
+            {/* User management routes */}
             <Route
               exact
               path="user-profile"
@@ -298,6 +307,59 @@ export default function App() {
               }
               key="user-management"
             />
+
+            {/* Table Tennis routes */}
+            <Route
+              exact
+              path="/table-tennis/dashboard"
+              element={
+                <ProtectedRoute isAuthenticated={authContext.isAuthenticated}>
+                  <TableTennisDashboard />
+                </ProtectedRoute>
+              }
+              key="tt-dashboard"
+            />
+            <Route
+              exact
+              path="/table-tennis/live-matches"
+              element={
+                <ProtectedRoute isAuthenticated={authContext.isAuthenticated}>
+                  <LiveMatches />
+                </ProtectedRoute>
+              }
+              key="live-matches"
+            />
+            <Route
+              exact
+              path="/table-tennis/tournaments"
+              element={
+                <ProtectedRoute isAuthenticated={authContext.isAuthenticated}>
+                  <Tournaments />
+                </ProtectedRoute>
+              }
+              key="tournaments"
+            />
+            <Route
+              exact
+              path="/table-tennis/rankings"
+              element={
+                <ProtectedRoute isAuthenticated={authContext.isAuthenticated}>
+                  <Rankings />
+                </ProtectedRoute>
+              }
+              key="rankings"
+            />
+            <Route
+              exact
+              path="/table-tennis/players"
+              element={
+                <ProtectedRoute isAuthenticated={authContext.isAuthenticated}>
+                  <Players />
+                </ProtectedRoute>
+              }
+              key="players"
+            />
+            
             {getRoutes(routes)}
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Routes>

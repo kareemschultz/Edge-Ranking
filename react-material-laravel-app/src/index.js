@@ -19,8 +19,15 @@ import { BrowserRouter } from "react-router-dom";
 import App from "App";
 import { AuthContextProvider } from "context";
 
-// Material Dashboard 2 React Context  Provider
+// Material Dashboard 2 React Context Provider
 import { MaterialUIControllerProvider } from "context";
+
+// Import Table Tennis components to ensure they're registered properly
+import "./layouts/table-tennis/dashboard";
+import "./layouts/table-tennis/live-matches";
+import "./layouts/table-tennis/tournaments";
+import "./layouts/table-tennis/rankings";
+import "./layouts/table-tennis/players";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
